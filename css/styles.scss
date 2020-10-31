@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+$light-pink:#f7f5fa;
+$bg-color:#fafafa;
+$main-heading:hsl(271, 36%, 24%);
+$paragraph:hsl(270, 7%, 64%);
+$light_magenta: hsl(293, 100%, 63%);
+$light_violet: hsl(264, 100%, 61%);
+
+@mixin mQ($px) {
+    @media screen and(min-width:$px) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: $bg-color;
+    min-height: 100vh;
+
+    .gradient {
+        width: 400px;
+        height: 500px;
+        position: fixed;
+
+        &--1 {
+            background: #56ccf2;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, $light_magenta, $light_violet);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, $light_magenta, $light_violet);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            border-radius: 0px 0px 400px 400px;
+
+            left: -210px;
+            z-index: -1;
+
+
+            @include mQ(968px) {
+                width: 450px;
+                height: 630px;
+                left: -100px;
+            }
+
+            @include mQ(1400px) {
+                left: -60px;
+                width: 450px;
+                height: 700px;
+            }
+
+        }
+
+        &--2 {
+            background: $light-pink;
+            border-radius: 400px 400px 0px 0px;
+
+            bottom: 0;
+            right: -210px;
+            z-index: -1;
+
+            @include mQ(968px) {
+                width: 450px;
+                height: 630px;
+                right: -100px;
+            }
+
+            @include mQ(1400px) {
+                right: -100px;
+                width: 450px;
+                height: 700px;
+            }
+        }
+
+
+
+    }
+
+    #wrapper {
+
+
+        @include mQ(968px) {
+            grid-template-columns: 1fr 1fr;
+            display: grid;
+            height: 100vh;
+            align-content: center;
+        }
+
+        .app {
+            text-align: center;
+            padding: 3.4rem 3.4rem 2rem;
+
+            @include mQ(968px) {
+                text-align: right;
+                padding: 0;
+            }
+
+            img {
+                width: 100%;
+                max-width: 250px;
+                border-radius: 22px;
+                box-shadow: 0px 7px 25px hsla(0, 0%, 0%, 0.137);
+
+                @include mQ(968px) {
+                    max-width: 200px;
+                }
+
+                @include mQ(1400px) {
+                    max-width: 260px;
+                    margin-right: 8em;
+                }
+            }
+        }
+
+        .content {
+            text-align: center;
+            padding-bottom: 3.4rem;
+            max-width: 75%;
+            margin: 0 auto;
+
+
+            @include mQ(968px) {
+                align-self: center;
+                text-align: left;
+            }
+
+
+            @include mQ(1400px) {
+                max-width: 57%;
+                margin-left: 0px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+                font-weight: 500;
+                color: $main-heading;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 0.9rem;
+                color: $paragraph;
+                line-height: 1.6em;
+
+            }
+        }
+    }
+}
